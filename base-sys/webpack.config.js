@@ -3,12 +3,13 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 const path = require("path");
 module.exports = {
   entry: "./src/index.tsx",
+  target: "web",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "index.[hash:8].js",
   },
   devServer: {
-    port: 8011,
+    port: 9000,
     hot: true,
     contentBase: path.resolve(__dirname, "dist"),
     compress: true,
@@ -20,16 +21,6 @@ module.exports = {
       hash: true,
       template: path.resolve(__dirname, "src/index.html"),
     }),
-    new HtmlWebpackPlugin({
-      filename: "child-sys-one.html",
-      hash: true,
-      template: path.resolve(__dirname, "src/index.html"),
-    }),
-    new HtmlWebpackPlugin({
-      filename: "child-sys-two.html",
-      hash: true,
-      template: path.resolve(__dirname, "src/index.html"),
-    }),
   ],
   module: {
     rules: [
@@ -38,8 +29,14 @@ module.exports = {
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.ts$/,
+        test: /\.js$/,
+        loader: "babel-loader",
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.tsx?$/,
         loader: "ts-loader",
+        exclude: /node_modules/,
       },
     ],
   },

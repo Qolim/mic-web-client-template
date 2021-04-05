@@ -5,7 +5,6 @@ import * as React from "react";
 export const App: React.FC = () => {
   const headerRef = React.useRef<HTMLElement>(null);
   const mainRef = React.useRef<HTMLElement>(null);
-
   const { store, set_store } = useGlobalStore();
 
   React.useEffect(() => {
@@ -34,8 +33,12 @@ export const App: React.FC = () => {
 
   return (
     <>
-      <header ref={headerRef}></header>
-      <main ref={mainRef}></main>
+      <header className="base-sys-header" ref={headerRef}>
+        {" "}
+      </header>
+      <main className="base-sys-mian-content" ref={mainRef}>
+        {" "}
+      </main>
     </>
   );
 };
