@@ -1,0 +1,15 @@
+.title {
+  color: #766413;
+}
+.main-content > nav {
+  display: flex;
+  flex-flow: row nowrap;
+  list-style: none;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.12);
+}
+.main-content > nav > a {
+  padding: 10px 20px;
+  text-decoration: none;
+  cursor: pointer;
+}
